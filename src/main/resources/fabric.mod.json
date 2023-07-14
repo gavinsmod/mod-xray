@@ -1,0 +1,28 @@
+{
+  "schemaVersion": 1,
+  "id": "mod-template",
+  "version": "${version}",
+  "name": "mod-template",
+  "description": "",
+  "authors": [],
+  "contact": {
+    "repo": "https://github.com/gavinsmod/mod-template"
+  },
+  "license": "MIT",
+  "icon": "assets/mod-template/icon.png",
+  "environment": "client",
+  "entrypoints": {
+    "main": [
+      "com.peasenet.mod.Mod_template"
+    ]
+  },
+  "mixins": [
+    "mod-template.mixins.json"
+  ],
+  "depends": {
+    "fabricloader": ">=${loader_version}",
+    "gavinsmod": ">=1.4.5",
+    "fabric": "*",
+    "minecraft": "${minecraft_version}"
+  }
+}
