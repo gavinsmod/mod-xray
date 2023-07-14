@@ -21,7 +21,6 @@ package com.peasenet.mods.render
 
 import com.peasenet.gui.mod.render.GuiXray
 import com.peasenet.main.GavinsMod
-import com.peasenet.mods.Mod
 import com.peasenet.mods.Type
 import com.peasenet.settings.SettingBuilder
 import com.peasenet.util.RenderUtils
