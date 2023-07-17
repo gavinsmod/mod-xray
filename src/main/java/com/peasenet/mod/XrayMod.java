@@ -1,5 +1,7 @@
 package com.peasenet.mod;
 
+import com.peasenet.config.XrayConfig;
+import com.peasenet.main.Settings;
 import com.peasenet.mods.render.ModXray;
 import com.peasenet.main.GavinsMod;
 import net.fabricmc.api.ModInitializer;
@@ -14,7 +16,9 @@ public class XrayMod implements ModInitializer {
      */
     @Override
     public void onInitialize() {
-        LOGGER.info("Hello Fabric world!");
+        LOGGER.info("Initializing GEM Xray!");
+        Settings.addConfig(new XrayConfig());
         GavinsMod.addMod(new ModXray());
+        LOGGER.info("Initialized GEM Xray!");
     }
 }

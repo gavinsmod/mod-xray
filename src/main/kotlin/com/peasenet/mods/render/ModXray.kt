@@ -19,8 +19,10 @@
  */
 package com.peasenet.mods.render
 
+import com.peasenet.config.XrayConfig
 import com.peasenet.gui.mod.render.GuiXray
 import com.peasenet.main.GavinsMod
+import com.peasenet.main.Settings
 import com.peasenet.mods.Type
 import com.peasenet.settings.SettingBuilder
 import com.peasenet.util.RenderUtils
@@ -31,6 +33,7 @@ import com.peasenet.util.listeners.BlockEntityRenderListener
 import com.peasenet.util.listeners.ShouldDrawSideListener
 import com.peasenet.util.listeners.TessellateBlockListener
 import net.minecraft.block.BlockState
+import net.minecraft.client.MinecraftClient
 
 /**
  * @author gt3ch1
@@ -53,10 +56,10 @@ class ModXray : RenderMod(
             .setWidth(100f)
             .setHeight(10f)
             .setTitle("gavinsmod.settings.xray.culling")
-            .setState(xrayConfig.blockCulling)
+            .setState(Settings.getConfig<XrayConfig>("xray").blockCulling)
             .buildToggleSetting()
         culling.setCallback {
-            xrayConfig.blockCulling = culling.value
+            Settings.getConfig<XrayConfig>("xray").blockCulling = culling.value
             if (isActive) reload()
         }
 //        val menu = ClickSetting("gavinsmod.settings.xray.blocks")
@@ -65,7 +68,7 @@ class ModXray : RenderMod(
             .setWidth(100f)
             .setHeight(10f)
             .setTitle("gavinsmod.settings.xray.blocks")
-            .setCallback { client.setScreen(GuiXray()) }
+            .setCallback { MinecraftClient.getInstance().setScreen(GuiXray()) }
             .buildClickSetting()
         xraySubSetting.add(menu)
         xraySubSetting.add(culling)
@@ -87,7 +90,7 @@ class ModXray : RenderMod(
     }
 
     override fun activate() {
-        client.setChunkCulling(xrayConfig.blockCulling)
+        client.setChunkCulling(Settings.getConfig<XrayConfig>("xray").blockCulling)
         super.activate()
         reloadRenderer()
     }
@@ -137,7 +140,7 @@ class ModXray : RenderMod(
          * @return True if visible, false if not
          */
         fun shouldDrawFace(block: BlockState): Boolean {
-            return xrayConfig.isInList(block.block)
+            return Settings.getConfig<XrayConfig>("xray").isInList(block.block)
         }
     }
 }
