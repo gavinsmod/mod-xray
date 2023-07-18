@@ -23,7 +23,6 @@ import com.peasenet.config.XrayConfig
 import com.peasenet.gui.mod.render.GuiXray
 import com.peasenet.main.GavinsMod
 import com.peasenet.main.Settings
-import com.peasenet.mods.Type
 import com.peasenet.settings.SettingBuilder
 import com.peasenet.util.RenderUtils
 import com.peasenet.util.event.data.BlockEntityRender
@@ -103,7 +102,7 @@ class ModXray : RenderMod(
     }
 
     override fun onTick() {
-        if (isActive && !RenderUtils.isHighGamma) RenderUtils.setHighGamma() else if (!GavinsMod.isEnabled(Type.FULL_BRIGHT) && !RenderUtils.isLastGamma && deactivating) {
+        if (isActive && !RenderUtils.isHighGamma) RenderUtils.setHighGamma() else if (!GavinsMod.isEnabled("fullbright") && !RenderUtils.isLastGamma && deactivating) {
             RenderUtils.setLowGamma()
             deactivating = !RenderUtils.isLastGamma
         }
@@ -111,7 +110,7 @@ class ModXray : RenderMod(
 
     override fun deactivate() {
         // check if full bright is disabled, if it is, reset gamma back to LAST_GAMMA
-        if (!GavinsMod.isEnabled(Type.FULL_BRIGHT)) RenderUtils.setLowGamma()
+        if (!GavinsMod.isEnabled("fullbright")) RenderUtils.setLowGamma()
         client.setChunkCulling(true)
         reloadRenderer()
         deactivating = true
