@@ -34,7 +34,6 @@ import com.peasenet.main.GavinsMod
 import com.peasenet.main.GavinsModClient.Companion.minecraftClient
 import com.peasenet.main.Mods.Companion.getMod
 import com.peasenet.main.Settings
-import com.peasenet.mods.Type
 import net.minecraft.block.Block
 import net.minecraft.client.gui.DrawContext
 import net.minecraft.client.gui.widget.TextFieldWidget
