@@ -19,6 +19,7 @@
   "depends": {
     "fabricloader": ">=${loader_version}",
     "gemclient-core": "1.0.3",
+    "gavinsmod-events": "0.0.5",
     "fabric": "*",
     "minecraft": "${minecraft_version}"
   }
